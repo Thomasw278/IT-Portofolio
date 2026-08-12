@@ -2,12 +2,22 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    // Only activate custom cursor on fine pointer devices (desktop)
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+    setIsDesktop(isFinePointer);
+    if (!isFinePointer) return;
+
+    let rAF: number;
     const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      cancelAnimationFrame(rAF);
+      rAF = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      });
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -16,31 +26,32 @@ export default function CustomCursor() {
       setIsHovering(!!isHoverable);
     };
 
-    window.addEventListener('mousemove', updateMousePosition);
-    window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('mousemove', updateMousePosition, { passive: true });
+    window.addEventListener('mouseover', handleMouseOver, { passive: true });
 
     return () => {
+      cancelAnimationFrame(rAF);
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);
 
+  if (!isDesktop) return null;
+
   return (
-    <>
-      <div className="noise-overlay" />
-      <motion.div
-        className={`cursor-dot ${isHovering ? 'hovering' : ''}`}
-        animate={{
-          x: mousePosition.x,
-          y: mousePosition.y,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 1000,
-          damping: 50,
-          mass: 0.1,
-        }}
-      />
-    </>
+    <motion.div
+      className={`cursor-dot ${isHovering ? 'hovering' : ''}`}
+      style={{ willChange: 'transform' }}
+      animate={{
+        x: mousePosition.x,
+        y: mousePosition.y,
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 800,
+        damping: 45,
+        mass: 0.1,
+      }}
+    />
   );
 }
