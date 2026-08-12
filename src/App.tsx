@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Lenis from 'lenis';
 import CustomCursor from './components/CustomCursor';
 import GlobalBackground from './components/GlobalBackground';
@@ -14,8 +14,6 @@ import Footer from './components/Footer';
 import MobileBottomDock from './components/MobileBottomDock';
 
 function App() {
-  const [showContent, setShowContent] = useState(false);
-
   useEffect(() => {
     let lenis: Lenis | null = null;
     let rafId: number;
@@ -45,15 +43,9 @@ function App() {
       console.warn('Lenis scroll warning:', err);
     }
 
-    // Simple preloader delay for effect
-    const timer = setTimeout(() => {
-      setShowContent(true);
-    }, 1000);
-
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       if (lenis) lenis.destroy();
-      clearTimeout(timer);
     };
   }, []);
 
@@ -61,22 +53,6 @@ function App() {
     <div className="bg-[#000000] text-white font-sans min-h-screen selection:bg-[#FF3300] selection:text-white relative z-0">
       <GlobalBackground />
       <CustomCursor />
-      
-      {/* Cinematic Preloader Overlay */}
-      <div 
-        className={`fixed inset-0 z-50 bg-[#000000] flex items-center justify-center transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          showContent ? '-translate-y-full pointer-events-none' : 'translate-y-0'
-        }`}
-      >
-        <div className="overflow-hidden">
-          <div className={`font-display font-bold text-4xl tracking-tighter transition-transform duration-700 delay-200 ${
-            showContent ? 'translate-y-full' : 'translate-y-0'
-          }`}>
-            THOMAS<span className="text-[#FF3300]">.</span>
-          </div>
-        </div>
-      </div>
-
       <Navbar />
       <main>
         <HeroChapter />
