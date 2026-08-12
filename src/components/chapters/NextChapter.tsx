@@ -1,13 +1,21 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Mail, Briefcase, Terminal, MapPin } from 'lucide-react';
+import { Mail, Briefcase, Terminal, MapPin, Copy, Check } from 'lucide-react';
 
 export default function NextChapter() {
   const ref = useRef<HTMLElement>(null);
+  const [copied, setCopied] = useState(false);
+  
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end end"]
   });
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText('thomaswisnuadi1236@email.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   
   // Creates a slight parallax "curtain" effect
   const y = useTransform(scrollYProgress, [0, 1], [-150, 0]);
@@ -37,9 +45,17 @@ export default function NextChapter() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <p className="text-base sm:text-xl text-[#888888] font-sans max-w-md">
+          <p className="text-base sm:text-xl text-[#888888] font-sans max-w-md mb-6">
             Currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
           </p>
+
+          <button
+            onClick={copyEmail}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 hover:border-[#FF3300] font-mono text-xs text-white hover:text-[#FF3300] transition-all shadow-lg active:scale-95"
+          >
+            {copied ? <Check size={14} className="text-green-400" /> : <Copy size={14} />}
+            <span>{copied ? 'Email Copied!' : 'Copy Email Address'}</span>
+          </button>
         </motion.div>
 
         <motion.div

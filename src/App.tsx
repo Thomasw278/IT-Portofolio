@@ -11,6 +11,8 @@ import JourneyChapter from './components/chapters/JourneyChapter';
 import NextChapter from './components/chapters/NextChapter';
 import Footer from './components/Footer';
 
+import MobileBottomDock from './components/MobileBottomDock';
+
 function App() {
   const [showContent, setShowContent] = useState(false);
 
@@ -85,6 +87,7 @@ function App() {
         <NextChapter />
       </main>
       <Footer />
+      <MobileBottomDock />
     </div>
   );
 }

@@ -1,14 +1,29 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, Sparkles } from 'lucide-react';
+
+const roles = [
+  "Backend Developer & Database Enthusiast",
+  "Scalable Systems Architect",
+  "API & Performance Engineer",
+  "Full Stack Craftsman"
+];
 
 export default function HeroChapter() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [roleIndex, setRoleIndex] = useState(0);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, []);
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const yAvatar = useTransform(scrollYProgress, [0, 1], [0, 100]);
@@ -44,16 +59,36 @@ export default function HeroChapter() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
+            {/* Status Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FF3300]/10 border border-[#FF3300]/30 mb-4 text-xs font-mono text-[#FF3300] w-fit shadow-lg backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[#FF3300] animate-ping" />
+              <span>Available for Hire</span>
+            </div>
+
             <div className="font-serif italic text-3xl sm:text-5xl text-[#CCCCCC] mb-2 ml-1">
               Hello, I'm
             </div>
             <h2 className="font-display font-bold text-3xl sm:text-5xl md:text-[75px] leading-[1.0] sm:leading-[0.9] text-white tracking-tighter">
               THOMAS AQUINAS<br/>RYAN WISNU ADI
             </h2>
-            <h3 className="font-sans text-[#FF3300] font-bold text-base sm:text-xl mt-4 sm:mt-6 uppercase tracking-widest">
-              Backend Developer &<br/>Database Enthusiast
-            </h3>
-            <p className="font-sans text-[#888888] text-sm md:text-base mt-4 sm:mt-6 max-w-[300px] leading-relaxed">
+            
+            {/* Dynamic Rotating Role Title */}
+            <div className="h-10 sm:h-12 overflow-hidden mt-3 sm:mt-4 flex items-center">
+              <AnimatePresence mode="wait">
+                <motion.h3
+                  key={roleIndex}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4 }}
+                  className="font-sans text-[#FF3300] font-bold text-sm sm:text-lg uppercase tracking-widest"
+                >
+                  {roles[roleIndex]}
+                </motion.h3>
+              </AnimatePresence>
+            </div>
+
+            <p className="font-sans text-[#888888] text-sm md:text-base mt-3 sm:mt-4 max-w-[320px] leading-relaxed">
               I engineer digital experiences that blend immaculate code with high-end editorial design. Passionate about clean architecture and smooth interactions.
             </p>
             
@@ -104,25 +139,34 @@ export default function HeroChapter() {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 lg:flex lg:flex-col gap-4 sm:gap-10 w-full lg:w-auto">
-              <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 items-start lg:items-center justify-start lg:justify-end">
-                <span className="font-display font-bold text-3xl sm:text-5xl text-[#FF3300]">5+</span>
+            <div className="grid grid-cols-3 lg:flex lg:flex-col gap-3 sm:gap-10 w-full lg:w-auto">
+              <motion.div 
+                whileTap={{ scale: 0.95 }}
+                className="flex flex-col lg:flex-row gap-1 lg:gap-4 items-start lg:items-center justify-start lg:justify-end p-3 lg:p-0 rounded-xl bg-white/[0.03] lg:bg-transparent border border-white/5 lg:border-none"
+              >
+                <span className="font-display font-bold text-2xl sm:text-5xl text-[#FF3300]">5+</span>
                 <span className="font-mono text-[9px] sm:text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
                   Years<br/>Experience
                 </span>
-              </div>
-              <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 items-start lg:items-center justify-start lg:justify-end">
-                <span className="font-display font-bold text-3xl sm:text-5xl text-[#FF3300]">40+</span>
+              </motion.div>
+              <motion.div 
+                whileTap={{ scale: 0.95 }}
+                className="flex flex-col lg:flex-row gap-1 lg:gap-4 items-start lg:items-center justify-start lg:justify-end p-3 lg:p-0 rounded-xl bg-white/[0.03] lg:bg-transparent border border-white/5 lg:border-none"
+              >
+                <span className="font-display font-bold text-2xl sm:text-5xl text-[#FF3300]">40+</span>
                 <span className="font-mono text-[9px] sm:text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
                   Projects<br/>Completed
                 </span>
-              </div>
-              <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 items-start lg:items-center justify-start lg:justify-end">
-                <span className="font-display font-bold text-3xl sm:text-5xl text-[#FF3300]">20+</span>
+              </motion.div>
+              <motion.div 
+                whileTap={{ scale: 0.95 }}
+                className="flex flex-col lg:flex-row gap-1 lg:gap-4 items-start lg:items-center justify-start lg:justify-end p-3 lg:p-0 rounded-xl bg-white/[0.03] lg:bg-transparent border border-white/5 lg:border-none"
+              >
+                <span className="font-display font-bold text-2xl sm:text-5xl text-[#FF3300]">20+</span>
                 <span className="font-mono text-[9px] sm:text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
                   Happy<br/>Clients
                 </span>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 
