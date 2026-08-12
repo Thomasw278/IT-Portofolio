@@ -3,10 +3,9 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown, Sparkles } from 'lucide-react';
 
 const roles = [
-  "Backend Developer & Database Enthusiast",
-  "Scalable Systems Architect",
-  "API & Performance Engineer",
-  "Full Stack Craftsman"
+  "Backend Developer",
+  "Database Enthusiast",
+  "Software Engineer"
 ];
 
 export default function HeroChapter() {
@@ -88,7 +87,7 @@ export default function HeroChapter() {
               </AnimatePresence>
             </div>
 
-            <p className="font-sans text-[#888888] text-sm md:text-base mt-3 sm:mt-4 max-w-[320px] leading-relaxed">
+            <p className="font-sans text-[#888888] text-sm md:text-base mt-3 sm:mt-4 max-w-[320px] leading-relaxed text-justify">
               I engineer digital experiences that blend immaculate code with high-end editorial design. Passionate about clean architecture and smooth interactions.
             </p>
             
@@ -144,7 +143,7 @@ export default function HeroChapter() {
                 whileTap={{ scale: 0.95 }}
                 className="flex flex-col lg:flex-row gap-1 lg:gap-4 items-start lg:items-center justify-start lg:justify-end p-3 lg:p-0 rounded-xl bg-white/[0.03] lg:bg-transparent border border-white/5 lg:border-none"
               >
-                <span className="font-display font-bold text-2xl sm:text-5xl text-[#FF3300]">5+</span>
+                <span className="font-display font-bold text-2xl sm:text-5xl text-[#FF3300]">3+</span>
                 <span className="font-mono text-[9px] sm:text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
                   Years<br/>Experience
                 </span>
@@ -153,7 +152,7 @@ export default function HeroChapter() {
                 whileTap={{ scale: 0.95 }}
                 className="flex flex-col lg:flex-row gap-1 lg:gap-4 items-start lg:items-center justify-start lg:justify-end p-3 lg:p-0 rounded-xl bg-white/[0.03] lg:bg-transparent border border-white/5 lg:border-none"
               >
-                <span className="font-display font-bold text-2xl sm:text-5xl text-[#FF3300]">40+</span>
+                <span className="font-display font-bold text-2xl sm:text-5xl text-[#FF3300]">5+</span>
                 <span className="font-mono text-[9px] sm:text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
                   Projects<br/>Completed
                 </span>
@@ -162,9 +161,9 @@ export default function HeroChapter() {
                 whileTap={{ scale: 0.95 }}
                 className="flex flex-col lg:flex-row gap-1 lg:gap-4 items-start lg:items-center justify-start lg:justify-end p-3 lg:p-0 rounded-xl bg-white/[0.03] lg:bg-transparent border border-white/5 lg:border-none"
               >
-                <span className="font-display font-bold text-2xl sm:text-5xl text-[#FF3300]">20+</span>
+                <span className="font-display font-bold text-2xl sm:text-5xl text-[#FF3300]">Local</span>
                 <span className="font-mono text-[9px] sm:text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
-                  Happy<br/>Clients
+                  Community<br/>Clients
                 </span>
               </motion.div>
             </div>

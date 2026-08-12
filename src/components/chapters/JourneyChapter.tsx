@@ -2,26 +2,35 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    role: "Senior Software Engineer",
-    company: "TechNova Inc.",
-    period: "2021 — Present",
+    role: "Assistant Lecturer (Part Time)",
+    company: "Universitas Kristen Duta Wacana",
+    period: "Feb 2025 — Present",
     metrics: [
-      "Architected microservices handling 2M+ daily requests.",
-      "Reduced cloud infrastructure costs by 45% YoY.",
-      "Led a team of 6 engineers across 3 timezones."
+      "Mentored 30+ undergraduate students in practical laboratory courses focusing on Algorithms & Programming, Computer Networks (Routing & Configuration), and Database Systems.",
+      "Designed weekly technical coursework and problem-solving assignments to strengthen students' practical engineering capabilities."
     ],
-    tags: ["Go", "React", "AWS", "Kubernetes"]
+    tags: ["Algorithms & Programming", "Computer Networks", "Database Systems", "Mentoring"]
   },
   {
-    role: "Full Stack Developer",
-    company: "Elevate Digital",
-    period: "2018 — 2021",
+    role: "Student Staff IT Center (Part Time)",
+    company: "Universitas Kristen Duta Wacana",
+    period: "Feb 2025 — Present",
     metrics: [
-      "Built the core trading engine processing $10M+ monthly volume.",
-      "Improved frontend performance score from 65 to 98.",
-      "Implemented automated CI/CD reducing deployment time by 80%."
+      "Assisted students and campus staff with software installation, system setup, and initial device configuration.",
+      "Performed routine hardware and software maintenance across all university IT laboratories.",
+      "Monitored and maintained network routing stability and internet connectivity across computer labs."
     ],
-    tags: ["TypeScript", "Node.js", "PostgreSQL", "Docker"]
+    tags: ["IT Support", "Hardware & Software", "Network Configuration", "Troubleshooting"]
+  },
+  {
+    role: "Vice Chairman (Co-Lead)",
+    company: "Informatic Anniversary Awards (IAA)",
+    period: "2024 — 2025",
+    metrics: [
+      "Spearheaded and coordinated the executive organizing committee for the Informatic Anniversary Awards (IAA).",
+      "Oversaw event operations, division workflows, budget management, media publication, and logistics execution."
+    ],
+    tags: ["Leadership", "Event Management", "Team Coordination", "Public Relations"]
   }
 ];
 
@@ -30,7 +39,7 @@ export default function JourneyChapter() {
     <section id="career" className="py-16 sm:py-32 px-4 sm:px-6 max-w-[1200px] mx-auto min-h-screen">
       <div className="mb-12 sm:mb-24">
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">04 // The Journey</span>
-        <h2 className="font-display text-3xl sm:text-6xl font-bold mt-4 sm:mt-6 tracking-tight">Career & Impact</h2>
+        <h2 className="font-display text-3xl sm:text-6xl font-bold mt-4 sm:mt-6 tracking-tight">Career & Experience</h2>
       </div>
 
       <div className="space-y-12 sm:space-y-24">
@@ -50,8 +59,8 @@ export default function JourneyChapter() {
 
             {/* Left Col: Meta */}
             <div>
-              <h3 className="text-2xl font-display font-bold mb-2">{exp.role}</h3>
-              <div className="font-mono text-sm text-[#888888] mb-6">{exp.company}</div>
+              <h3 className="text-xl sm:text-2xl font-display font-bold mb-2 text-white">{exp.role}</h3>
+              <div className="font-mono text-sm text-[#888888] mb-4">{exp.company}</div>
               <div className="inline-block px-3 py-1 border border-[#FF3300]/30 text-[#FF3300] font-mono text-xs rounded-full">
                 {exp.period}
               </div>
@@ -61,18 +70,16 @@ export default function JourneyChapter() {
             <div>
               <ul className="space-y-4 mb-8">
                 {exp.metrics.map((metric, i) => (
-                  <li key={i} className="flex gap-4 text-[#CCCCCC] font-sans text-lg">
-                    <span className="text-[#FF3300] mt-1">✦</span>
-                    <span dangerouslySetInnerHTML={{ 
-                      __html: metric.replace(/(\d+%?|\$\d+M\+?|2M\+?|45%|80%|65|98|6)/g, '<span class="text-white font-mono font-bold">$&</span>') 
-                    }} />
+                  <li key={i} className="flex gap-3 text-[#CCCCCC] font-sans text-base sm:text-lg leading-relaxed text-justify">
+                    <span className="text-[#FF3300] mt-1 shrink-0">✦</span>
+                    <span>{metric}</span>
                   </li>
                 ))}
               </ul>
               
               <div className="flex flex-wrap gap-2">
                 {exp.tags.map(tag => (
-                  <span key={tag} className="px-3 py-1 bg-white/5 text-white/60 font-mono text-xs rounded">
+                  <span key={tag} className="px-3 py-1 bg-white/5 text-white/70 font-mono text-xs rounded-full border border-white/10">
                     {tag}
                   </span>
                 ))}

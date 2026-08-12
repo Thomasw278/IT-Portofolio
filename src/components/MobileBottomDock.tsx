@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Cpu, FolderGit2, Mail, Check, Copy } from 'lucide-react';
+import { User, Cpu, FolderGit2, Mail, Check, Copy, Sun, Moon, Sparkles } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const dockItems = [
   { id: 'hero', label: 'Home', icon: User },
@@ -13,6 +14,7 @@ const dockItems = [
 export default function MobileBottomDock() {
   const [activeTab, setActiveTab] = useState('hero');
   const [copied, setCopied] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const scrollTo = (id: string) => {
     setActiveTab(id);
@@ -56,7 +58,7 @@ export default function MobileBottomDock() {
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`relative flex flex-col items-center justify-center py-1 px-3 rounded-full transition-colors ${
+                className={`relative flex flex-col items-center justify-center py-1 px-2.5 rounded-full transition-colors ${
                   isActive ? 'text-white' : 'text-[#888888]'
                 }`}
               >
@@ -73,12 +75,22 @@ export default function MobileBottomDock() {
             );
           })}
 
-          <div className="h-5 w-px bg-white/10 mx-1" />
+          <div className="h-5 w-px bg-white/10 mx-0.5" />
+
+          {/* Theme Switcher Button */}
+          <button
+            onClick={toggleTheme}
+            className="flex flex-col items-center justify-center py-1 px-2 rounded-full text-[#888888] active:text-[#FF3300] transition-colors"
+            title={`Switch Background Theme: ${theme === 'crimson' ? 'Cyber Cyan' : 'Crimson Red'}`}
+          >
+            <Sparkles size={18} className={theme === 'crimson' ? 'text-[#FF3300]' : 'text-[#00E5FF]'} />
+            <span className="text-[9px] font-mono mt-0.5">{theme === 'crimson' ? 'Crimson' : 'Cyber'}</span>
+          </button>
 
           {/* Copy Email Button */}
           <button
             onClick={copyEmail}
-            className="flex flex-col items-center justify-center py-1 px-2.5 rounded-full text-[#888888] active:text-[#FF3300] transition-colors"
+            className="flex flex-col items-center justify-center py-1 px-2 rounded-full text-[#888888] active:text-[#FF3300] transition-colors"
             title="Copy Email"
           >
             {copied ? <Check size={18} className="text-green-400" /> : <Copy size={18} />}

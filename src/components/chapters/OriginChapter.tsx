@@ -1,30 +1,50 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import { Terminal, Layout, Cpu, Database } from 'lucide-react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { Terminal, Layout, Database, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
+
+const tabs = [
+  { id: 'server', label: 'server.ts', icon: Terminal },
+  { id: 'database', label: 'db_arch.sql', icon: Database },
+  { id: 'status', label: 'system.log', icon: Zap }
+];
 
 export default function OriginChapter() {
   const containerRef = useRef<HTMLElement>(null);
+  const [activeTab, setActiveTab] = useState('server');
+  const [logIndex, setLogIndex] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 45]);
-  const rotate2 = useTransform(scrollYProgress, [0, 1], [0, -45]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  const logs = [
+    "[INFO] Initializing PostgreSQL pool... Connected (12ms)",
+    "[INFO] Connecting Redis Cache Server... OK",
+    "[INFO] Loading GraphQL schema & resolvers...",
+    "[SUCCESS] Backend Services online. Listening on port 8080."
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setLogIndex((prev) => (prev + 1) % logs.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section 
       id="about"
       ref={containerRef}
-      className="py-32 px-6 max-w-[1400px] mx-auto min-h-screen flex flex-col justify-center relative"
+      className="py-24 sm:py-32 px-4 sm:px-6 max-w-[1400px] mx-auto min-h-screen flex flex-col justify-center relative"
     >
-      <div className="mb-16">
+      <div className="mb-12 sm:mb-16">
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">01 // The Origin</span>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         
         {/* Left Text */}
         <div className="max-w-2xl">
@@ -34,11 +54,11 @@ export default function OriginChapter() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-8">
+            <h2 className="font-display text-3xl sm:text-5xl font-bold mb-6 sm:mb-8 leading-tight">
               Bridging the gap between <span className="font-serif italic font-normal text-[#FF3300]">design & engineering.</span>
             </h2>
             <motion.div 
-              className="space-y-6 text-[#CCCCCC] font-sans text-lg leading-relaxed"
+              className="space-y-5 text-[#CCCCCC] font-sans text-base sm:text-lg leading-relaxed text-justify"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -50,7 +70,7 @@ export default function OriginChapter() {
               }}
             >
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }}>
-                Hello, I'm Thomas. For over five years, I've engineered digital experiences at the intersection of performant code and immersive design. 
+                Hello, I'm Thomas. For over three years, I've engineered digital experiences at the intersection of performant code and immersive design. 
               </motion.p>
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }}>
                 I specialize in architecting scalable systems, shaping user interfaces, and turning complex logic into elegant, accessible solutions. Whether it's a high-traffic fintech dashboard or a cinematic e-commerce platform, I ensure the underlying architecture is as flawless as the front-end aesthetics.
@@ -60,102 +80,143 @@ export default function OriginChapter() {
               </motion.p>
             </motion.div>
 
-            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-8 pt-10 border-t border-white/10">
+            <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-white/10">
               {[
-                { label: "Experience", value: "5+ Yrs" },
-                { label: "Projects", value: "40+" },
-                { label: "Clients", value: "Global" },
-                { label: "Focus", value: "Full Stack" }
+                { label: "Experience", value: "3+ Yrs" },
+                { label: "Projects", value: "5+" },
+                { label: "Clients", value: "Local" },
+                { label: "Focus", value: "DB & Software" }
               ].map((stat, i) => (
                 <div key={i}>
                   <div className="font-mono text-[10px] text-[#888888] uppercase mb-1">{stat.label}</div>
-                  <div className="font-display text-2xl font-bold text-white">{stat.value}</div>
+                  <div className="font-display text-xl sm:text-2xl font-bold text-white">{stat.value}</div>
                 </div>
               ))}
             </div>
           </motion.div>
         </div>
 
-        {/* Right Animated Graphic */}
-        <div className="relative h-[600px] hidden lg:block perspective-[1000px]">
-          {/* Main Glowing Background */}
-          <motion.div 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-tr from-[#FF3300]/20 to-purple-600/20 rounded-full blur-[80px]"
-            animate={{ 
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          {/* Floating Element 1: Code Block */}
-          <motion.div 
-            style={{ y: y1, rotateX: rotate1 }}
-            className="absolute top-[10%] left-[10%] w-[280px] bg-[#111111] border border-white/10 rounded-xl p-6 shadow-2xl backdrop-blur-md"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            <div className="flex items-center gap-2 mb-4 pb-4 border-b border-white/5">
-              <Terminal className="w-4 h-4 text-[#FF3300]" />
-              <span className="font-mono text-xs text-[#888888]">server.js</span>
-            </div>
-            <div className="font-mono text-[10px] text-[#CCCCCC] space-y-2">
-              <p><span className="text-purple-400">import</span> express <span className="text-purple-400">from</span> 'express';</p>
-              <p><span className="text-purple-400">const</span> app = express();</p>
-              <br/>
-              <p>app.<span className="text-blue-400">get</span>('/', (req, res) =&gt; {'{'})</p>
-              <p className="pl-4">res.<span className="text-blue-400">send</span>('System Online');</p>
-              <p>{'}'});</p>
-            </div>
-          </motion.div>
-
-          {/* Floating Element 2: UI Wireframe */}
-          <motion.div 
-            style={{ y: y2, rotateY: rotate2 }}
-            className="absolute bottom-[10%] right-[5%] w-[320px] bg-[#0a0a0a] border border-[#FF3300]/30 rounded-xl p-6 shadow-2xl shadow-[#FF3300]/5 backdrop-blur-md z-10"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            <div className="flex items-center gap-2 mb-4 pb-4 border-b border-white/5">
-              <Layout className="w-4 h-4 text-[#FF3300]" />
-              <span className="font-mono text-xs text-[#888888]">ui_component.tsx</span>
-            </div>
-            <div className="space-y-4">
-              <div className="h-2 w-1/3 bg-white/20 rounded animate-pulse" />
-              <div className="h-24 w-full bg-[#111111] rounded border border-white/5 flex items-center justify-center">
-                 <motion.div 
-                    animate={{ rotate: 360 }} 
-                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                 >
-                    <Cpu className="w-8 h-8 text-[#FF3300]/50" />
-                 </motion.div>
+        {/* Right Interactive Live Terminal Sandbox */}
+        <motion.div style={{ y: y1 }} className="w-full">
+          <div className="w-full max-w-xl mx-auto bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 sm:p-6 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+            {/* Header / Tabs */}
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <div className="w-3 h-3 rounded-full bg-green-500/80" />
               </div>
-              <div className="flex gap-2">
-                <div className="h-6 w-1/2 bg-white/10 rounded" />
-                <div className="h-6 w-1/2 bg-[#FF3300]/20 rounded" />
+
+              {/* Tab Selector */}
+              <div className="flex items-center gap-1 bg-white/5 p-1 rounded-lg">
+                {tabs.map((tab) => {
+                  const Icon = tab.icon;
+                  const isActive = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`flex items-center gap-1.5 px-3 py-1 rounded-md font-mono text-[10px] transition-all ${
+                        isActive
+                          ? 'bg-[#FF3300] text-white font-semibold shadow-md'
+                          : 'text-[#888888] hover:text-white'
+                      }`}
+                    >
+                      <Icon size={12} />
+                      <span>{tab.label}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
-          </motion.div>
 
-          {/* Floating Orbiting Data Nodes */}
-          <motion.div
-            className="absolute top-1/2 left-1/2 w-[350px] h-[350px] -translate-x-1/2 -translate-y-1/2 border border-white/5 rounded-full z-0"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          >
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[#1a1a1a] border border-white/10 rounded-full flex items-center justify-center">
-              <Database className="w-3 h-3 text-[#888888]" />
-            </div>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-8 h-8 bg-[#1a1a1a] border border-[#FF3300]/30 rounded-full flex items-center justify-center">
-              <div className="w-2 h-2 bg-[#FF3300] rounded-full animate-ping" />
-            </div>
-          </motion.div>
+            {/* Sandbox Content Container */}
+            <div className="h-64 sm:h-72 overflow-hidden flex flex-col justify-between font-mono text-xs text-[#CCCCCC]">
+              <AnimatePresence mode="wait">
+                {activeTab === 'server' && (
+                  <motion.div
+                    key="server"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="space-y-3"
+                  >
+                    <div className="flex items-center justify-between text-[11px] text-[#888888] pb-2 border-b border-white/5">
+                      <span>STATUS: ONLINE</span>
+                      <span className="flex items-center gap-1.5 text-green-400">
+                        <CheckCircle2 size={12} /> 60 FPS / 99.9% Uptime
+                      </span>
+                    </div>
 
-        </div>
+                    <p className="text-purple-400"><span className="text-[#FF3300]">$</span> node server.ts --env=production</p>
+                    <p className="text-[#888888]">// Core Backend System Engine</p>
+                    <p><span className="text-blue-400">const</span> stack = ['MySQL', 'PostgreSQL', 'Node.js', 'Cassandra'];</p>
+                    <p><span className="text-blue-400">async function</span> initEngine() {'{'}</p>
+                    <p className="pl-4 text-green-400">await connectDatabase('PostgreSQL');</p>
+                    <p className="pl-4 text-green-400">await bootstrapMicroservices();</p>
+                    <p className="pl-4 text-[#888888]">return 'System Ready';</p>
+                    <p>{'}'}</p>
+                  </motion.div>
+                )}
+
+                {activeTab === 'database' && (
+                  <motion.div
+                    key="database"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="space-y-3"
+                  >
+                    <div className="flex items-center justify-between text-[11px] text-[#888888] pb-2 border-b border-white/5">
+                      <span>DB SCHEMAS: ACTIVE</span>
+                      <span className="flex items-center gap-1.5 text-[#FF3300]">
+                        <ShieldCheck size={12} /> Encrypted SQL Pool
+                      </span>
+                    </div>
+
+                    <p className="text-yellow-400">SELECT * FROM developer_stack WHERE dev = 'Thomas';</p>
+                    <div className="p-3 bg-white/[0.03] rounded-lg border border-white/5 space-y-1 text-[11px]">
+                      <p><span className="text-[#888888]">Primary DB:</span> PostgreSQL / MySQL</p>
+                      <p><span className="text-[#888888]">NoSQL Store:</span> MongoDB / Cassandra</p>
+                      <p><span className="text-[#888888]">ORM & Query:</span> Prisma / Native SQL</p>
+                      <p><span className="text-[#888888]">Performance:</span> Index Optimized (&lt;15ms)</p>
+                    </div>
+                  </motion.div>
+                )}
+
+                {activeTab === 'status' && (
+                  <motion.div
+                    key="status"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="space-y-3"
+                  >
+                    <div className="flex items-center justify-between text-[11px] text-[#888888] pb-2 border-b border-white/5">
+                      <span>REAL-TIME SYSTEM MONITOR</span>
+                      <span className="w-2 h-2 rounded-full bg-green-400 animate-ping" />
+                    </div>
+
+                    <div className="space-y-2 font-mono text-[11px]">
+                      {logs.map((log, i) => (
+                        <p key={i} className={i === logIndex ? 'text-[#FF3300] font-bold' : 'text-[#888888]'}>
+                          {log}
+                        </p>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Bottom Interactive Command Bar */}
+              <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[10px] text-[#666666]">
+                <span>Tap tabs to test system</span>
+                <span className="font-mono text-[#FF3300]">Yogyakarta, ID</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

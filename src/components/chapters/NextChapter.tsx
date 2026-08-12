@@ -45,7 +45,7 @@ export default function NextChapter() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <p className="text-base sm:text-xl text-[#888888] font-sans max-w-md mb-6">
+          <p className="text-base sm:text-xl text-[#888888] font-sans max-w-md mb-6 text-justify">
             Currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
           </p>
 

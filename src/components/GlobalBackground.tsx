@@ -1,8 +1,14 @@
 import { motion } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext';
 
 export default function GlobalBackground() {
+  const { theme } = useTheme();
+
+  const orbColor1 = theme === 'cyber' ? '#00E5FF' : '#FF3300';
+  const orbColor2 = theme === 'cyber' ? '#00FF66' : '#9333ea';
+
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none transition-colors duration-700">
 
       {/* 1. Subtle Developer Grid */}
       <div
@@ -18,9 +24,9 @@ export default function GlobalBackground() {
 
       {/* 2. Floating Aurora / Glow Orbs (Hardware-accelerated) */}
       <motion.div
-        className="absolute top-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full blur-[80px] opacity-20 pointer-events-none"
+        className="absolute top-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full blur-[90px] opacity-25 pointer-events-none transition-all duration-1000"
         style={{
-          background: 'radial-gradient(circle, #FF3300 0%, transparent 70%)',
+          background: `radial-gradient(circle, ${orbColor1} 0%, transparent 70%)`,
           willChange: 'transform'
         }}
         animate={{
@@ -31,9 +37,9 @@ export default function GlobalBackground() {
       />
 
       <motion.div
-        className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full blur-[80px] opacity-15 pointer-events-none"
+        className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full blur-[90px] opacity-20 pointer-events-none transition-all duration-1000"
         style={{
-          background: 'radial-gradient(circle, #9333ea 0%, transparent 70%)',
+          background: `radial-gradient(circle, ${orbColor2} 0%, transparent 70%)`,
           willChange: 'transform'
         }}
         animate={{
