@@ -107,19 +107,14 @@ export default function CraftChapter() {
               </div>
 
               <div className="flex justify-between items-center z-0 pt-2 border-t border-white/10">
-                <span className="font-mono text-[9px] text-[#666666] uppercase tracking-widest">Cohort 2027</span>
+                <span className="font-mono text-[9px] text-[#666666] uppercase tracking-widest">Selected Work</span>
                 <span className="font-mono text-xs text-white font-bold">{project.stats.Year}</span>
               </div>
             </div>
 
-            <div>
-              <span className="inline-block px-3 py-1 rounded-full border border-white/10 text-xs font-mono text-white/70 mb-3 bg-white/5">
-                {project.category}
-              </span>
-              <h3 className="text-2xl font-display font-bold mb-3">{project.title}</h3>
-              <p className="text-[#888888] text-sm leading-relaxed mb-5 text-justify">
-                {project.description}
-              </p>
+            <p className="text-[#888888] text-sm leading-relaxed text-justify">
+              {project.description}
+            </p>
 
               {/* Stats Grid */}
               <div className="grid grid-cols-3 gap-2 border-t border-white/10 pt-4 mb-5">
@@ -148,7 +143,7 @@ export default function CraftChapter() {
       </div>
 
       {/* Desktop Layout: Cinematic Sticky Horizontal Scroll */}
-      <div className="hidden md:block relative h-[500vh]">
+      <div ref={targetRef} className="hidden md:block relative h-[300vh]">
         <div className="sticky top-0 h-screen flex items-center overflow-hidden bg-black">
           {/* Section Header */}
           <div className="absolute top-10 left-6 z-10 flex w-full justify-between pr-12">

@@ -48,4 +48,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   );
 };
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    return {
+      theme: 'crimson' as ThemeMode,
+      toggleTheme: () => {}
+    };
+  }
+  return context;
+};
