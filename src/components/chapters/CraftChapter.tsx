@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ExternalLink, Terminal } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const projects = [
   {

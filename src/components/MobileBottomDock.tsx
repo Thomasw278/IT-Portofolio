@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Cpu, FolderGit2, Mail, Check, Copy, Sun, Moon, Sparkles } from 'lucide-react';
+import { User, Cpu, FolderGit2, Mail, Check, Copy, Sparkles } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 const dockItems = [

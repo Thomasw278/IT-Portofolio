@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { Menu, X, Sun, Moon, Sparkles } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
 import Magnetic from './Magnetic';
 import { useTheme } from '../context/ThemeContext';
 
@@ -203,8 +203,8 @@ export default function Navbar() {
                 onClick={toggleTheme}
                 className="flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-white/10 border border-white/10 font-mono text-xs text-white uppercase tracking-widest"
               >
-                {theme === 'dark' ? <Sun size={16} className="text-amber-400" /> : <Moon size={16} className="text-indigo-400" />}
-                <span>{theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}</span>
+                <Sparkles size={16} className={theme === 'crimson' ? 'text-[#FF3300]' : 'text-[#00E5FF]'} />
+                <span>{theme === 'crimson' ? 'Switch to Cyber Cyan' : 'Switch to Crimson Red'}</span>
               </button>
 
               <a

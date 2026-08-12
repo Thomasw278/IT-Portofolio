@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { Terminal, Layout, Database, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
+import { Terminal, Database, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
 
 const tabs = [
   { id: 'server', label: 'server.ts', icon: Terminal },
