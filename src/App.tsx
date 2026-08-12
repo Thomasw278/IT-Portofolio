@@ -19,24 +19,22 @@ function App() {
     let rafId: number;
 
     try {
-      // Lenis Smooth Scroll Setup
+      // Lenis Smooth Scroll Setup (Optimized for 60 FPS)
       lenis = new Lenis({
-        duration: 1.2,
+        duration: 1.0,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: 'vertical',
         gestureOrientation: 'vertical',
         smoothWheel: true,
         wheelMultiplier: 1,
-        touchMultiplier: 2,
+        touchMultiplier: 1,
         infinite: false,
       });
 
-      function raf(time: number) {
-        if (lenis) {
-          lenis.raf(time);
-          rafId = requestAnimationFrame(raf);
-        }
-      }
+      const raf = (time: number) => {
+        lenis?.raf(time);
+        rafId = requestAnimationFrame(raf);
+      };
 
       rafId = requestAnimationFrame(raf);
     } catch (err) {

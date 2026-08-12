@@ -24,27 +24,27 @@ export default function GlobalBackground() {
 
       {/* 2. Floating Aurora / Glow Orbs (Hardware-accelerated) */}
       <motion.div
-        className="absolute top-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full blur-[90px] opacity-25 pointer-events-none transition-all duration-1000"
+        className="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] rounded-full opacity-60 pointer-events-none transition-all duration-700"
         style={{
-          background: `radial-gradient(circle, ${orbColor1} 0%, transparent 70%)`,
+          background: `radial-gradient(circle, ${orbColor1}26 0%, ${orbColor1}08 45%, transparent 70%)`,
           willChange: 'transform'
         }}
         animate={{
-          x: [0, 50, 0],
-          y: [0, 30, 0],
+          x: [0, 40, 0],
+          y: [0, 25, 0],
         }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <motion.div
-        className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full blur-[90px] opacity-20 pointer-events-none transition-all duration-1000"
+        className="absolute -bottom-[10%] -right-[10%] w-[55vw] h-[55vw] rounded-full opacity-50 pointer-events-none transition-all duration-700"
         style={{
-          background: `radial-gradient(circle, ${orbColor2} 0%, transparent 70%)`,
+          background: `radial-gradient(circle, ${orbColor2}20 0%, ${orbColor2}05 45%, transparent 70%)`,
           willChange: 'transform'
         }}
         animate={{
-          x: [0, -50, 0],
-          y: [0, -30, 0],
+          x: [0, -40, 0],
+          y: [0, -25, 0],
         }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
