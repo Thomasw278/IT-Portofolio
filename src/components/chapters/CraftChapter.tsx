@@ -67,6 +67,7 @@ export default function CraftChapter() {
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+  const progressBarWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section id="projects" ref={targetRef}>
@@ -243,7 +244,7 @@ export default function CraftChapter() {
             <div className="w-24 h-px bg-white/20 relative">
               <motion.div 
                 className="absolute top-0 left-0 h-full bg-[#FF3300]" 
-                style={{ width: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
+                style={{ width: progressBarWidth }}
               />
             </div>
             <span>05</span>
