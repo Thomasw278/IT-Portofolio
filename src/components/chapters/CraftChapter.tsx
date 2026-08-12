@@ -9,7 +9,7 @@ const projects = [
     description: "A mobile application concept designed to transform traditional laundry businesses into a modern digital platform, bridging local vendors with customers through a seamless mobile experience.",
     stats: { "Role": "UI/UX Designer", "Year": "2023", "Platform": "Figma" },
     color: "#FF3300",
-    image: `${import.meta.env.BASE_URL}projects/jos-laundry.png`,
+    image: "",
     linkText: "View Figma Design",
     demo: "https://www.figma.com/design/olYVx0JyqXmyQhtUSnmG9C/IMK?node-id=83-129&t=dhLUMP6YCbnjSngO-1",
     github: "https://www.figma.com/design/olYVx0JyqXmyQhtUSnmG9C/IMK?node-id=83-129&t=dhLUMP6YCbnjSngO-1"
@@ -20,7 +20,7 @@ const projects = [
     description: "Prototype of an IoT smart mini car with HC-SR04 ultrasonic distance & obstacle detection, automated DC dynamo movement, and LED signaling, monitored and controlled via Node-RED with real-time MySQL logging.",
     stats: { "Role": "IoT Engineer", "Year": "2025", "Tech": "C# · MQTT" },
     color: "#2255FF",
-    image: `${import.meta.env.BASE_URL}projects/smart-mini-car.png`,
+    image: "",
     linkText: "View Google Drive Folder",
     demo: "https://drive.google.com/drive/folders/1xqHYOAapGkovWT6SVkpBpfEXy5-lf1eB?usp=sharing",
     github: "https://drive.google.com/drive/folders/1xqHYOAapGkovWT6SVkpBpfEXy5-lf1eB?usp=sharing"
@@ -31,7 +31,7 @@ const projects = [
     description: "A functional To Do List application integrated into a personalized productivity dashboard featuring automated task management, an interactive Pomodoro timer, and embedded local database persistence.",
     stats: { "Role": "Full Stack Dev", "Year": "2026", "Tech": "JavaScript" },
     color: "#00FF66",
-    image: `${import.meta.env.BASE_URL}projects/productivity-app.png`,
+    image: "",
     linkText: "View GitHub Repository",
     demo: "https://github.com/Thomasw278/CodingCamp-9Mar26-Thomas-Wisnu",
     github: "https://github.com/Thomasw278/CodingCamp-9Mar26-Thomas-Wisnu"
@@ -42,7 +42,7 @@ const projects = [
     description: "Android culinary management app featuring multi-role authentication (Admin & User), interactive analytics dashboard tracking recipe distributions, search catalog, and complete content creation workflow.",
     stats: { "Role": "Mobile Dev", "Year": "2026", "Tech": "Kotlin" },
     color: "#FF9900",
-    image: `${import.meta.env.BASE_URL}projects/dapur-ibu.png`,
+    image: "",
     linkText: "View GitHub Repository",
     demo: "https://github.com/Thomasw278/Kotlin-ProjectDapurIbu",
     github: "https://github.com/Thomasw278/Kotlin-ProjectDapurIbu"
@@ -53,7 +53,7 @@ const projects = [
     description: "Institutional R&D digital transformation project for FTI UKDW. Mitigates climate change by digitizing traditional forestry into an automated barcode tree inventory platform with carbon valuation formulas and digital certificates.",
     stats: { "Role": "Backend Dev", "Year": "2026", "Scope": "FTI UKDW" },
     color: "#00E5FF",
-    image: `${import.meta.env.BASE_URL}projects/giricahyo-dashboard.png`,
+    image: "",
     linkText: "View GitHub Profile",
     demo: "https://github.com/Thomasw278",
     github: "https://github.com/Thomasw278"
