@@ -27,12 +27,13 @@ function App() {
       infinite: false,
     });
 
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Simple preloader delay for effect
     const timer = setTimeout(() => {
@@ -40,6 +41,7 @@ function App() {
     }, 1500);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
       clearTimeout(timer);
     };
