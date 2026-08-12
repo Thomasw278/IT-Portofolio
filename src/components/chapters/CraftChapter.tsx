@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Terminal } from 'lucide-react';
 
 const projects = [
   {
@@ -102,7 +102,7 @@ export default function CraftChapter() {
                   className="p-2.5 rounded-xl border border-white/20 text-white/80 hover:text-white hover:bg-white/10 transition-colors"
                   title="Source Code"
                 >
-                  <Github size={16} />
+                  <Terminal size={16} />
                 </a>
               </div>
             </div>
