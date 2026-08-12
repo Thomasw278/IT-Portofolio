@@ -15,11 +15,15 @@ import MobileBottomDock from './components/MobileBottomDock';
 
 function App() {
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+    if (!isFinePointer) return;
+
     let lenis: Lenis | null = null;
     let rafId: number;
 
     try {
-      // Lenis Smooth Scroll Setup (Optimized for 60 FPS)
+      // Lenis Smooth Scroll Setup (Desktop Only for 120 FPS performance)
       lenis = new Lenis({
         duration: 1.0,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

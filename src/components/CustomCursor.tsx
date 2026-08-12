@@ -1,29 +1,34 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Only activate custom cursor on fine pointer devices (desktop)
+    if (typeof window === 'undefined') return;
     const isFinePointer = window.matchMedia('(pointer: fine)').matches;
-    setIsDesktop(isFinePointer);
     if (!isFinePointer) return;
 
     let rAF: number;
     const updateMousePosition = (e: MouseEvent) => {
       cancelAnimationFrame(rAF);
       rAF = requestAnimationFrame(() => {
-        setMousePosition({ x: e.clientX, y: e.clientY });
+        if (cursorRef.current) {
+          cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        }
       });
     };
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isHoverable = target.closest('a, button, [data-cursor-hover]');
-      setIsHovering(!!isHoverable);
+      if (cursorRef.current) {
+        const isHoverable = target.closest('a, button, [data-cursor-hover]');
+        if (isHoverable) {
+          cursorRef.current.classList.add('active');
+        } else {
+          cursorRef.current.classList.remove('active');
+        }
+      }
     };
 
     window.addEventListener('mousemove', updateMousePosition, { passive: true });
@@ -36,21 +41,16 @@ export default function CustomCursor() {
     };
   }, []);
 
-  if (!isDesktop) return null;
-
   return (
-    <motion.div
-      className={`cursor-dot ${isHovering ? 'hovering' : ''}`}
-      style={{ willChange: 'transform' }}
-      animate={{
-        x: mousePosition.x,
-        y: mousePosition.y,
-      }}
-      transition={{
-        type: 'spring',
-        stiffness: 800,
-        damping: 45,
-        mass: 0.1,
+    <div
+      ref={cursorRef}
+      className="cursor-dot"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        willChange: 'transform',
+        pointerEvents: 'none',
       }}
     />
   );
