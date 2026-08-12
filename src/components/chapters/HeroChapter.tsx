@@ -44,20 +44,20 @@ export default function HeroChapter() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className="font-serif italic text-4xl sm:text-5xl text-[#CCCCCC] mb-2 ml-1">
+            <div className="font-serif italic text-3xl sm:text-5xl text-[#CCCCCC] mb-2 ml-1">
               Hello, I'm
             </div>
-            <h2 className="font-display font-bold text-4xl sm:text-6xl md:text-[75px] leading-[0.9] text-white tracking-tighter">
+            <h2 className="font-display font-bold text-3xl sm:text-5xl md:text-[75px] leading-[1.0] sm:leading-[0.9] text-white tracking-tighter">
               THOMAS AQUINAS<br/>RYAN WISNU ADI
             </h2>
-            <h3 className="font-sans text-[#FF3300] font-bold text-lg md:text-xl mt-6 uppercase tracking-widest">
+            <h3 className="font-sans text-[#FF3300] font-bold text-base sm:text-xl mt-4 sm:mt-6 uppercase tracking-widest">
               Backend Developer &<br/>Database Enthusiast
             </h3>
-            <p className="font-sans text-[#888888] text-sm md:text-base mt-6 max-w-[300px] leading-relaxed">
+            <p className="font-sans text-[#888888] text-sm md:text-base mt-4 sm:mt-6 max-w-[300px] leading-relaxed">
               I engineer digital experiences that blend immaculate code with high-end editorial design. Passionate about clean architecture and smooth interactions.
             </p>
             
-            <div className="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-[#888888] mt-10">
+            <div className="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-[#888888] mt-8 sm:mt-10">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#FF3300] animate-pulse" />
                 Based in Yogyakarta
@@ -72,7 +72,7 @@ export default function HeroChapter() {
 
           {/* Center Avatar Overlay */}
           <motion.div 
-            className="relative h-[60vh] lg:h-[80vh] w-full max-w-[500px] mx-auto z-10 order-1 lg:order-2 flex items-end justify-center"
+            className="relative h-[45vh] sm:h-[55vh] lg:h-[80vh] w-full max-w-[400px] lg:max-w-[500px] mx-auto z-10 order-1 lg:order-2 flex items-end justify-center"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -90,12 +90,12 @@ export default function HeroChapter() {
 
           {/* Right Content / Stats */}
           <motion.div 
-            className="flex flex-col items-start lg:items-end text-left lg:text-right z-20 order-3 pb-10 lg:pb-20"
+            className="flex flex-col items-start lg:items-end text-left lg:text-right z-20 order-3 pb-6 lg:pb-20"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
           >
-            <div className="flex items-center gap-4 mb-16 max-w-[200px]">
+            <div className="hidden sm:flex items-center gap-4 mb-8 lg:mb-16 max-w-[200px]">
               <div className="w-10 h-10 shrink-0 rounded-full border border-white/20 flex items-center justify-center text-white">
                 <Sparkles className="w-4 h-4 text-[#FF3300]" />
               </div>
@@ -104,22 +104,22 @@ export default function HeroChapter() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-10">
-              <div className="flex gap-4 items-center justify-start lg:justify-end">
-                <span className="font-display font-bold text-5xl text-[#FF3300]">5+</span>
-                <span className="font-mono text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
+            <div className="grid grid-cols-3 lg:flex lg:flex-col gap-4 sm:gap-10 w-full lg:w-auto">
+              <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 items-start lg:items-center justify-start lg:justify-end">
+                <span className="font-display font-bold text-3xl sm:text-5xl text-[#FF3300]">5+</span>
+                <span className="font-mono text-[9px] sm:text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
                   Years<br/>Experience
                 </span>
               </div>
-              <div className="flex gap-4 items-center justify-start lg:justify-end">
-                <span className="font-display font-bold text-5xl text-[#FF3300]">40+</span>
-                <span className="font-mono text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
+              <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 items-start lg:items-center justify-start lg:justify-end">
+                <span className="font-display font-bold text-3xl sm:text-5xl text-[#FF3300]">40+</span>
+                <span className="font-mono text-[9px] sm:text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
                   Projects<br/>Completed
                 </span>
               </div>
-              <div className="flex gap-4 items-center justify-start lg:justify-end">
-                <span className="font-display font-bold text-5xl text-[#FF3300]">20+</span>
-                <span className="font-mono text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
+              <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 items-start lg:items-center justify-start lg:justify-end">
+                <span className="font-display font-bold text-3xl sm:text-5xl text-[#FF3300]">20+</span>
+                <span className="font-mono text-[9px] sm:text-[10px] text-[#888888] uppercase tracking-widest text-left leading-tight w-20">
                   Happy<br/>Clients
                 </span>
               </div>

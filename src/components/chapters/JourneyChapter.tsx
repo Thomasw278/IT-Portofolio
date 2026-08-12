@@ -27,13 +27,13 @@ const experiences = [
 
 export default function JourneyChapter() {
   return (
-    <section id="career" className="py-32 px-6 max-w-[1200px] mx-auto min-h-screen">
-      <div className="mb-24">
+    <section id="career" className="py-16 sm:py-32 px-4 sm:px-6 max-w-[1200px] mx-auto min-h-screen">
+      <div className="mb-12 sm:mb-24">
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">04 // The Journey</span>
-        <h2 className="font-display text-4xl sm:text-6xl font-bold mt-6 tracking-tight">Career & Impact</h2>
+        <h2 className="font-display text-3xl sm:text-6xl font-bold mt-4 sm:mt-6 tracking-tight">Career & Impact</h2>
       </div>
 
-      <div className="space-y-24">
+      <div className="space-y-12 sm:space-y-24">
         {experiences.map((exp, index) => (
           <motion.div 
             key={index}

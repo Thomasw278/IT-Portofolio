@@ -16,13 +16,13 @@ const techStack = [
 
 export default function ArsenalChapter() {
   return (
-    <section id="tools" className="py-32 px-6 max-w-[1200px] mx-auto min-h-screen flex flex-col justify-center">
-      <div className="mb-20">
+    <section id="tools" className="py-16 sm:py-32 px-4 sm:px-6 max-w-[1200px] mx-auto min-h-screen flex flex-col justify-center">
+      <div className="mb-10 sm:mb-20">
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">03 // Tech Arsenal</span>
-        <h2 className="font-display text-4xl sm:text-6xl font-bold mt-6 tracking-tight">Tools of the trade</h2>
+        <h2 className="font-display text-3xl sm:text-6xl font-bold mt-4 sm:mt-6 tracking-tight">Tools of the trade</h2>
       </div>
       
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
         {techStack.map((tech, i) => (
           <motion.div 
             key={i}
@@ -30,14 +30,14 @@ export default function ArsenalChapter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.05 }}
-            className="group flex flex-col items-center text-center p-8 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] rounded-xl transition-colors"
+            className="group flex flex-col items-center text-center p-4 sm:p-8 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] rounded-xl transition-colors"
             data-cursor-hover
           >
-            <div className="text-[#888888] group-hover:text-[#FF3300] transition-colors mb-6">
+            <div className="text-[#888888] group-hover:text-[#FF3300] transition-colors mb-4 sm:mb-6">
               {tech.icon}
             </div>
-            <div className="font-display font-semibold text-lg text-white mb-2">{tech.name}</div>
-            <div className="font-mono text-[10px] text-[#666666] uppercase tracking-widest">{tech.category}</div>
+            <div className="font-display font-semibold text-sm sm:text-lg text-white mb-1 sm:mb-2">{tech.name}</div>
+            <div className="font-mono text-[9px] sm:text-[10px] text-[#666666] uppercase tracking-widest">{tech.category}</div>
           </motion.div>
         ))}
       </div>
