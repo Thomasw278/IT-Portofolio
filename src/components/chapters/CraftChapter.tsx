@@ -61,16 +61,19 @@ const projects = [
 ];
 
 export default function CraftChapter() {
-  const targetRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const desktopRef = useRef<HTMLDivElement>(null);
+
+  // Scroll progress tied to the desktop sticky container only
   const { scrollYProgress } = useScroll({
-    target: targetRef,
+    target: desktopRef,
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
   const progressBarWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section id="projects" ref={targetRef}>
+    <section id="projects" ref={sectionRef}>
       {/* Mobile Layout: Clean vertical stack with interactive cards */}
       <div className="md:hidden py-16 px-5 max-w-xl mx-auto space-y-12">
         <div>
@@ -143,7 +146,7 @@ export default function CraftChapter() {
       </div>
 
       {/* Desktop Layout: Cinematic Sticky Horizontal Scroll */}
-      <div ref={targetRef} className="hidden md:block relative h-[300vh]">
+      <div ref={desktopRef} className="hidden md:block relative h-[300vh]">
         <div className="sticky top-0 h-screen flex items-center overflow-hidden bg-black">
           {/* Section Header */}
           <div className="absolute top-10 left-6 z-10 flex w-full justify-between pr-12">
