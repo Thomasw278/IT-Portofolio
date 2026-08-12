@@ -77,14 +77,27 @@ export default function MobileBottomDock() {
 
           <div className="h-5 w-px bg-white/10 mx-0.5" />
 
-          {/* Theme Switcher Button */}
+          {/* Theme Switcher Button — prominent pill with color glow */}
           <button
             onClick={toggleTheme}
-            className="flex flex-col items-center justify-center py-1 px-2 rounded-full text-[#888888] active:text-[#FF3300] transition-colors"
+            className="flex flex-col items-center justify-center py-1 px-2 rounded-full transition-all active:scale-90"
             title={`Switch Background Theme: ${theme === 'crimson' ? 'Cyber Cyan' : 'Crimson Red'}`}
           >
-            <Sparkles size={18} className={theme === 'crimson' ? 'text-[#FF3300]' : 'text-[#00E5FF]'} />
-            <span className="text-[9px] font-mono mt-0.5">{theme === 'crimson' ? 'Crimson' : 'Cyber'}</span>
+            <div
+              className="w-5 h-5 rounded-full mb-0.5 flex items-center justify-center shadow-lg"
+              style={{
+                background: theme === 'crimson' ? '#FF3300' : '#00E5FF',
+                boxShadow: theme === 'crimson'
+                  ? '0 0 8px rgba(255,51,0,0.8)'
+                  : '0 0 8px rgba(0,229,255,0.8)',
+                transition: 'background 0.4s ease, box-shadow 0.4s ease',
+              }}
+            >
+              <Sparkles size={11} className="text-white" />
+            </div>
+            <span className="text-[9px] font-mono" style={{ color: theme === 'crimson' ? '#FF3300' : '#00E5FF' }}>
+              {theme === 'crimson' ? 'Crimson' : 'Cyber'}
+            </span>
           </button>
 
           {/* Copy Email Button */}
