@@ -26,7 +26,7 @@ export default function Footer() {
             >
               <div className="w-full h-full rounded-full overflow-hidden relative">
                 <img 
-                  src="/avatar.png" 
+                  src={`${import.meta.env.BASE_URL}avatar.png`} 
                   alt="Back to top" 
                   className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
                 />

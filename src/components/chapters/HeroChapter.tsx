@@ -82,7 +82,7 @@ export default function HeroChapter() {
             {/* Gradient mask at the bottom so the avatar blends seamlessly into the black background */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent z-10 h-32 bottom-0 top-auto" />
             <img 
-              src="/avatar.png" 
+              src={`${import.meta.env.BASE_URL}avatar.png`} 
               alt="Thomas Aquinas Ryan Wisnu Adi" 
               className="w-full h-full object-cover object-bottom filter grayscale hover:grayscale-0 transition-all duration-700" 
             />
