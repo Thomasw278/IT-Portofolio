@@ -14,12 +14,19 @@ const ThemeContext = createContext<ThemeContextType>({
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<ThemeMode>(() => {
-    const saved = localStorage.getItem('portfolio-bg-theme');
-    return (saved as ThemeMode) || 'crimson';
+    try {
+      const saved = localStorage.getItem('portfolio-bg-theme');
+      return (saved as ThemeMode) || 'crimson';
+    } catch {
+      return 'crimson';
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem('portfolio-bg-theme', theme);
+    try {
+      localStorage.setItem('portfolio-bg-theme', theme);
+    } catch {}
+
     const root = document.documentElement;
     if (theme === 'cyber') {
       root.classList.add('theme-cyber');
