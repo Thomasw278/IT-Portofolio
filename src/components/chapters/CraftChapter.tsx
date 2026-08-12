@@ -137,9 +137,8 @@ export default function CraftChapter() {
                   <ExternalLink size={14} /> {project.linkText}
                 </a>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
       </div>
 
       {/* Desktop Layout: Cinematic Sticky Horizontal Scroll */}
