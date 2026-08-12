@@ -15,34 +15,42 @@ function App() {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Lenis Smooth Scroll Setup
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
+    let lenis: Lenis | null = null;
     let rafId: number;
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
 
-    rafId = requestAnimationFrame(raf);
+    try {
+      // Lenis Smooth Scroll Setup
+      lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+        infinite: false,
+      });
+
+      function raf(time: number) {
+        if (lenis) {
+          lenis.raf(time);
+          rafId = requestAnimationFrame(raf);
+        }
+      }
+
+      rafId = requestAnimationFrame(raf);
+    } catch (err) {
+      console.warn('Lenis scroll warning:', err);
+    }
 
     // Simple preloader delay for effect
     const timer = setTimeout(() => {
       setShowContent(true);
-    }, 1500);
+    }, 1000);
 
     return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
+      if (rafId) cancelAnimationFrame(rafId);
+      if (lenis) lenis.destroy();
       clearTimeout(timer);
     };
   }, []);
@@ -52,31 +60,31 @@ function App() {
       <GlobalBackground />
       <CustomCursor />
       
-      {/* Cinematic Preloader */}
+      {/* Cinematic Preloader Overlay */}
       <div 
-        className={`fixed inset-0 z-50 bg-[#000000] flex items-center justify-center transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${showContent ? '-translate-y-full' : 'translate-y-0'}`}
+        className={`fixed inset-0 z-50 bg-[#000000] flex items-center justify-center transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          showContent ? '-translate-y-full pointer-events-none' : 'translate-y-0'
+        }`}
       >
         <div className="overflow-hidden">
-          <div className={`font-display font-bold text-4xl tracking-tighter transition-transform duration-700 delay-300 ${showContent ? 'translate-y-full' : 'translate-y-0'}`}>
+          <div className={`font-display font-bold text-4xl tracking-tighter transition-transform duration-700 delay-200 ${
+            showContent ? 'translate-y-full' : 'translate-y-0'
+          }`}>
             THOMAS<span className="text-[#FF3300]">.</span>
           </div>
         </div>
       </div>
 
-      {showContent && (
-        <>
-          <Navbar />
-          <main>
-            <HeroChapter />
-            <OriginChapter />
-            <ArsenalChapter />
-            <CraftChapter />
-            <JourneyChapter />
-            <NextChapter />
-          </main>
-          <Footer />
-        </>
-      )}
+      <Navbar />
+      <main>
+        <HeroChapter />
+        <OriginChapter />
+        <ArsenalChapter />
+        <CraftChapter />
+        <JourneyChapter />
+        <NextChapter />
+      </main>
+      <Footer />
     </div>
   );
 }
