@@ -47,11 +47,11 @@ export default function HeroChapter() {
             <div className="font-serif italic text-4xl sm:text-5xl text-[#CCCCCC] mb-2 ml-1">
               Hello, I'm
             </div>
-            <h2 className="font-display font-bold text-6xl sm:text-8xl md:text-[100px] leading-[0.8] text-white tracking-tighter">
-              ARDAN<br/>PRATAMA
+            <h2 className="font-display font-bold text-4xl sm:text-6xl md:text-[75px] leading-[0.9] text-white tracking-tighter">
+              THOMAS AQUINAS<br/>RYAN WISNU ADI
             </h2>
             <h3 className="font-sans text-[#FF3300] font-bold text-lg md:text-xl mt-6 uppercase tracking-widest">
-              Full Stack Developer &<br/>UI/UX Enthusiast
+              Backend Developer &<br/>Database Enthusiast
             </h3>
             <p className="font-sans text-[#888888] text-sm md:text-base mt-6 max-w-[300px] leading-relaxed">
               I engineer digital experiences that blend immaculate code with high-end editorial design. Passionate about clean architecture and smooth interactions.
@@ -60,7 +60,7 @@ export default function HeroChapter() {
             <div className="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-[#888888] mt-10">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#FF3300] animate-pulse" />
-                Based in Jakarta
+                Based in Yogyakarta
               </span>
               <span className="hidden sm:inline-block w-px h-4 bg-white/20" />
               <span className="hidden sm:inline-block">Scroll to explore</span>
@@ -83,7 +83,7 @@ export default function HeroChapter() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent z-10 h-32 bottom-0 top-auto" />
             <img 
               src="/avatar.png" 
-              alt="Ardan Pratama" 
+              alt="Thomas Aquinas Ryan Wisnu Adi" 
               className="w-full h-full object-cover object-bottom filter grayscale hover:grayscale-0 transition-all duration-700" 
             />
           </motion.div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import Magnetic from './Magnetic';
 
 const navItems = [
@@ -46,14 +46,10 @@ function MagneticButton({ children, className = '', onClick }: any) {
 }
 
 export default function Navbar() {
-  const { scrollY } = useScroll();
   const [activeId, setActiveId] = useState('');
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
       // Better scroll spy using getBoundingClientRect
       let currentActiveId = '';
       for (const item of navItems) {
@@ -95,7 +91,7 @@ export default function Navbar() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             data-cursor-hover
           >
-            Ardan Pratama
+            Thomas Aquinas Ryan Wisnu Adi
           </div>
         </Magnetic>
 
@@ -120,7 +116,7 @@ export default function Navbar() {
 
         <Magnetic strength={0.4}>
           <a 
-            href="mailto:hello@ardan.com"
+            href="mailto:thomaswisnuadi1236@email.com"
             className="hidden md:inline-block bg-[#FF3300] text-white px-6 py-2 rounded-full font-mono text-xs uppercase tracking-widest font-semibold hover:bg-white hover:text-black transition-colors ml-4"
             data-cursor-hover
           >

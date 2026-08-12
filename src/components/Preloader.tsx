@@ -39,7 +39,7 @@ export default function Preloader() {
                 <span className="text-white font-bold text-lg font-mono">&lt;/&gt;</span>
               </div>
               <span className="text-2xl font-bold text-text">
-                ardan<span className="gradient-text">.dev</span>
+                thomas<span className="gradient-text">.dev</span>
               </span>
             </div>
 

@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
           {/* Left */}
           <div className="flex flex-col gap-1 text-[#888888] font-mono text-xs">
-            <span>© {new Date().getFullYear()} Ardan Pratama.</span>
+            <span>© {new Date().getFullYear()} Thomas Aquinas Ryan Wisnu Adi.</span>
             <span>All rights reserved.</span>
           </div>
 
@@ -39,7 +39,7 @@ export default function Footer() {
 
           {/* Right */}
           <div className="text-[#888888] font-mono text-xs text-right">
-            <span>Designed in Jakarta.</span><br/>
+            <span>Designed in Yogyakarta.</span><br/>
             <span>Built with React & Framer Motion.</span>
           </div>
         </div>

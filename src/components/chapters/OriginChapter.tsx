@@ -50,7 +50,7 @@ export default function OriginChapter() {
               }}
             >
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }}>
-                Hello, I'm Ardan. For over five years, I've engineered digital experiences at the intersection of performant code and immersive design. 
+                Hello, I'm Thomas. For over five years, I've engineered digital experiences at the intersection of performant code and immersive design. 
               </motion.p>
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }}>
                 I specialize in architecting scalable systems, shaping user interfaces, and turning complex logic into elegant, accessible solutions. Whether it's a high-traffic fintech dashboard or a cinematic e-commerce platform, I ensure the underlying architecture is as flawless as the front-end aesthetics.

@@ -56,7 +56,7 @@ function App() {
       >
         <div className="overflow-hidden">
           <div className={`font-display font-bold text-4xl tracking-tighter transition-transform duration-700 delay-300 ${showContent ? 'translate-y-full' : 'translate-y-0'}`}>
-            ARDAN<span className="text-[#FF3300]">.</span>
+            THOMAS<span className="text-[#FF3300]">.</span>
           </div>
         </div>
       </div>
