@@ -8,7 +8,8 @@ const navItems = [
   { name: 'About', id: 'about' },
   { name: 'Tech', id: 'tools' },
   { name: 'Experiments', id: 'projects' },
-  { name: 'Career', id: 'career' }
+  { name: 'Career', id: 'career' },
+  { name: 'Certs', id: 'certificates' }
 ];
 
 function MagneticButton({ children, className = '', onClick }: any) {

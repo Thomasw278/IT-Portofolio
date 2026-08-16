@@ -23,7 +23,7 @@ export default function NextChapter() {
     <section ref={ref} id="contact" className="relative py-16 sm:py-32 px-4 sm:px-6 max-w-[1200px] mx-auto min-h-screen flex flex-col justify-center overflow-hidden">
       <motion.div style={{ y }} className="w-full h-full flex flex-col justify-center">
         <div className="mb-6 sm:mb-8">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">05 // Contact</span>
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">06 // Contact</span>
         </div>
 
         <motion.h2 

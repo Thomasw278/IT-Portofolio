@@ -42,7 +42,7 @@ export default function ArsenalChapter() {
   return (
     <section id="tools" className="py-16 sm:py-32 px-4 sm:px-6 max-w-[1200px] mx-auto min-h-screen flex flex-col justify-center">
       <div className="mb-8 sm:mb-16">
-        <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">03 // Tech Arsenal</span>
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">02 // Tech Arsenal</span>
         <h2 className="font-display text-3xl sm:text-6xl font-bold mt-4 sm:mt-6 tracking-tight">Tools of the trade</h2>
         
         {/* Interactive Filter Pills */}

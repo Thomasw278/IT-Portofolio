@@ -78,7 +78,7 @@ export default function CraftChapter() {
       {/* Mobile Layout: Clean vertical stack with interactive cards */}
       <div className="md:hidden py-16 px-5 max-w-xl mx-auto space-y-12">
         <div>
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">02 // Featured Projects</span>
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">03 // Featured Projects</span>
           <h2 className="font-display text-3xl font-bold mt-2">Selected Work</h2>
         </div>
 
@@ -151,7 +151,7 @@ export default function CraftChapter() {
         <div className="sticky top-0 h-screen flex items-center overflow-hidden bg-black">
           {/* Section Header */}
           <div className="absolute top-10 left-6 z-10 flex w-full justify-between pr-12">
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">02 // Featured Projects</span>
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF3300]">03 // Featured Projects</span>
             <span className="font-mono text-xs text-white/50">Scroll to explore</span>
           </div>
 

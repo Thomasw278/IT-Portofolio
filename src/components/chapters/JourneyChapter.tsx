@@ -2,6 +2,50 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
+    role: "Vice Chairman — Student Relations & Organization Affairs",
+    company: "HMTI (Informatics Student Association) — Universitas Kristen Duta Wacana",
+    period: "2024 — 2025",
+    metrics: [
+      "Built and maintained collaborative relationships between students and relevant internal/external organizations.",
+      "Coordinated student activity programs within the Informatics Student Association (HMTI) ecosystem.",
+      "Designed and organized the Informatics Anniversary Awards (IAA), an annual recognition event celebrating outstanding achievements in the Informatics department."
+    ],
+    tags: ["Student Relations", "Event Planning", "Coordination", "Leadership"]
+  },
+  {
+    role: "President of Student Council (OSIS)",
+    company: "SMA Tarakanita Magelang",
+    period: "2021 — 2022",
+    metrics: [
+      "Led and coordinated all student council activities, ensuring alignment with both student interests and school regulations.",
+      "Designed and executed annual and monthly events, managing cross-division collaboration and logistics from planning to delivery.",
+      "Served as the primary liaison between the student body and faculty, effectively channeling student aspirations to school leadership."
+    ],
+    tags: ["Leadership", "Event Management", "Public Speaking", "Organizational Development"]
+  },
+  {
+    role: "Logistics Coordinator — SIXTI 2025",
+    company: "Universitas Kristen Duta Wacana",
+    period: "2025",
+    metrics: [
+      "Coordinated catering and meal preparation logistics for all committee members and event participants throughout the competition.",
+      "Managed venue borrowing and approval processes in collaboration with university administrative departments.",
+      "Ensured smooth event execution by overseeing competition venue layout and space arrangement prior to event day."
+    ],
+    tags: ["Logistics", "Event Coordination", "Venue Management", "Team Collaboration"]
+  },
+  {
+    role: "Member — Publication & Documentation Division (FTICAMP 2024)",
+    company: "Universitas Kristen Duta Wacana",
+    period: "2024",
+    metrics: [
+      "Captured and managed event documentation throughout all activity sessions, ensuring complete visual coverage.",
+      "Handled official social media content design and publication for the FTICAMP 2024 event.",
+      "Coordinated inter-session documentation handoffs to maintain continuity and quality of recorded content."
+    ],
+    tags: ["Photography", "Social Media", "Graphic Design", "Documentation"]
+  },
+  {
     role: "Assistant Lecturer (Part Time)",
     company: "Universitas Kristen Duta Wacana",
     period: "Feb 2025 — Present",

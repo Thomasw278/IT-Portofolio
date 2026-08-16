@@ -58,9 +58,8 @@ export default function MobileBottomDock() {
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`relative flex flex-col items-center justify-center py-1 px-2.5 rounded-full transition-colors ${
-                  isActive ? 'text-white' : 'text-[#888888]'
-                }`}
+                className={`relative flex flex-col items-center justify-center py-1 px-2.5 rounded-full transition-colors ${isActive ? 'text-white' : 'text-[#888888]'
+                  }`}
               >
                 {isActive && (
                   <motion.div

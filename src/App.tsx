@@ -8,6 +8,7 @@ import OriginChapter from './components/chapters/OriginChapter';
 import ArsenalChapter from './components/chapters/ArsenalChapter';
 import CraftChapter from './components/chapters/CraftChapter';
 import JourneyChapter from './components/chapters/JourneyChapter';
+import CertificatesChapter from './components/chapters/CertificatesChapter';
 import NextChapter from './components/chapters/NextChapter';
 import Footer from './components/Footer';
 
@@ -62,6 +63,7 @@ function App() {
         <ArsenalChapter />
         <CraftChapter />
         <JourneyChapter />
+        <CertificatesChapter />
         <NextChapter />
       </main>
       <Footer />
